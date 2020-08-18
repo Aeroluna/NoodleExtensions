@@ -246,6 +246,7 @@ Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 }
 ```
 Above event results in:
+
 ![AnimateTrack Position Demo](gif/PositionAnimateTrack1.gif)
 ```js
 
@@ -271,6 +272,7 @@ Above event results in:
 }
 ```
 Above event results in:
+
 ![AnimateTrack Position Demo](gif/PositionAssignPath.gif)
 
 # _localRotation
@@ -336,6 +338,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 }
 ```
 Above event results in:
+
 ![AnimateTrack localrotation demo](gif/LocalRotationAnimateTrack.gif)
 ```js
 //AssignPathAnimation
@@ -395,6 +398,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 }
 ```
 Above event results in:
+
 ![AnimateTrack rotation demo why are you reading this](gif/RotationAnimateTrack.gif)
 ```js
 //AssignPath
@@ -417,6 +421,7 @@ Above event results in:
 }
 ```
 Above event results in:
+
 !["animate my ass"](gif/RotationAssignPath.gif)
 # _dissolve
 `_dissolve` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
@@ -463,6 +468,7 @@ Point definition: `[transparency, time, (optional)easing]`
 },
 ```
 Above event results in:
+
 ![wowee stop hovering](gif/DissolveAnimateTrack.gif)
 
 ```js
@@ -476,6 +482,7 @@ Above event results in:
 }
 ```
 Above event results in:
+
 ![fuck you danike](gif/DissolveAssignPath.gif)
 # _dissolveArrow
 `_dissolveArrow` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
@@ -526,6 +533,7 @@ Point definition: `[transparency, time, (optional)easing]`
 }
 ```
 Above event results in:
+
 ![HandleBeatmapObjectCallbackControllerBeatmapEventDidTrigger](gif/DissolveAnimateTrack.gif)
 ```js
 //AssignhPathAnimation
@@ -624,6 +632,7 @@ Point definition: `[red,green,blue,alpha,time,(optional)easing]`
 }
 ```
 Above event results in:
+
 ![reaxt was in here and he was in pain](gif/ColorAnimateTrack.gif)
 ```js
 //AssignPathAnimation
@@ -665,6 +674,7 @@ Above event results in:
 }
 ```
 Above event results in:
+
 ![reaxt was in here and he was in pain](gif/ColorAssignPath.gif)
 # _definitePosition
 `_definitePosition` may be used in [`AssignPathAnimation`](#AssignPathAnimation)
@@ -721,6 +731,7 @@ Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 }
 ```
 Above event results in:
+
 ![its almost done](gif/DefinitePositionAnimateTrack.gif)
 
 
@@ -791,6 +802,7 @@ This time example is not the best. It is highly recommended you script/automate 
 }
 ```
 Above event results in:
+
 ![i hate manually writing time stuff](gif/TimeIsDumb.gif)
 
 # SpookyUnits
