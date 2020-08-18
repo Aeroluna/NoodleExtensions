@@ -353,6 +353,7 @@ Above event results in:
 
 ```
 Above event results in: 
+
 ![AssignPath localrotation demo](gif/LocalRotationAssignPath.gif)
 # _rotation
 `_rotation` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
