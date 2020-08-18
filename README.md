@@ -2,15 +2,16 @@
 
 This adds a host of new things you can do with your maps.
 
-Documentation for animation can be found [here](Documentation/AnimationDocs.md)
 
 ### MAPPERS: EITHER USE MAPPING EXTENSIONS OR NOODLE EXTENSIONS, DO NOT USE BOTH AT THE SAME TIME. Noodle Extensions is meant to completely replace Mapping Extensions, as they both do the same thing. Having both requirements can break some features.
 
-### NOODLE EXTENSIONS WILL NOT READ MAPS THAT USE MAPPING EXTENSIONS. YOU HAVE TO INSTALL MAPPING EXTENSIONS FOR THOSE. (You can have both of the mods installed at once)
+## NOODLE EXTENSIONS WILL NOT READ MAPS THAT USE MAPPING EXTENSIONS. YOU HAVE TO INSTALL MAPPING EXTENSIONS FOR THOSE. (You can have both of the mods installed at once)
 
 #### If you use any of these features, you MUST add "`Noodle Extensions`" as a requirement for your map for them to function, you can go [Here](https://github.com/Kylemc1413/SongCore/blob/master/README.md) to see how adding requirements to the info.dat works.
 
-All of these cool features are done through CustomJSONData, from the `"_customData"` field or `"_customEvents"`.
+All of these cool features are done through CustomJSONData, from the `"_customData"` field or [`"_customEvents"`](/Documentation/AnimationDocs.md#custom-events)
+
+### Documentation for animation can be found [here](Documentation/AnimationDocs.md)
 
 Example of `_customData`:
 
@@ -28,23 +29,7 @@ Example of `_customData`:
 	  }
 	]
 
-Example of `_customEvents`:
 
-	"_version": "2.0.0",
-	"_customData": {
-	  "_customEvents": [
-	    {
-	      "_time": 0.0,
-	      "_type": "HelloWorld",
-	      "_data": {
-	        "foo": 1.0,
-	        "message": "Hello from a custom event!"
-	      }
-	    }
-	  ]
-	}
-	"_events": [
-	// ...
 
 ## Objects (Notes and Obstacles)
   * `"_notes"`/`"_obstacles"` -> `"_customData"`
