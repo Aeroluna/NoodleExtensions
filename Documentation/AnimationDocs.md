@@ -246,7 +246,7 @@ Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 }
 ```
 Above event results in:
-![AnimateTrack Position Demo](/gif/PositionAnimateTrack1.gif)
+![AnimateTrack Position Demo](gif/PositionAnimateTrack1.gif)
 ```js
 
 //AssignPath
@@ -271,7 +271,7 @@ Above event results in:
 }
 ```
 Above event results in:
-![AnimateTrack Position Demo](/gif/PositionAssignPath.gif)
+![AnimateTrack Position Demo](gif/PositionAssignPath.gif)
 
 # _localRotation
 `_localRotation` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
@@ -336,7 +336,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 }
 ```
 Above event results in:
-![AnimateTrack localrotation demo](/gif/LocalRotationAnimateTrack.gif)
+![AnimateTrack localrotation demo](gif/LocalRotationAnimateTrack.gif)
 ```js
 //AssignPathAnimation
 {
@@ -350,7 +350,7 @@ Above event results in:
 
 ```
 Above event results in: 
-![AssignPath localrotation demo](/gif/LocalRotationAssignPath.gif)
+![AssignPath localrotation demo](gif/LocalRotationAssignPath.gif)
 # _rotation
 `_rotation` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
@@ -395,7 +395,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 }
 ```
 Above event results in:
-![AnimateTrack rotation demo why are you reading this](/gif/RotationAnimateTrack.gif)
+![AnimateTrack rotation demo why are you reading this](gif/RotationAnimateTrack.gif)
 ```js
 //AssignPath
  {
@@ -417,7 +417,7 @@ Above event results in:
 }
 ```
 Above event results in:
-!["animate my ass"](/gif/RotationAssignPath.gif)
+!["animate my ass"](gif/RotationAssignPath.gif)
 # _dissolve
 `_dissolve` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
@@ -463,7 +463,7 @@ Point definition: `[transparency, time, (optional)easing]`
 },
 ```
 Above event results in:
-![wowee stop hovering](/gif/DissolveAnimateTrack.gif)
+![wowee stop hovering](gif/DissolveAnimateTrack.gif)
 
 ```js
 {
@@ -476,7 +476,7 @@ Above event results in:
 }
 ```
 Above event results in:
-![fuck you danike](/gif/DissolveAssignPath.gif)
+![fuck you danike](gif/DissolveAssignPath.gif)
 # _dissolveArrow
 `_dissolveArrow` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
