@@ -207,7 +207,7 @@ ex:
 
 Describes the position **offset** of an object. It will continue any normal movement and have this stacked on top of it.
 
-**Note:** `_definitePosition` uses what is known as [Spooky Units](#SpookyUnits)
+**Note:** `_position` uses what is known as Spooky Units, 1 Spooky unit = 1 lane.
 
 Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 
@@ -247,7 +247,7 @@ Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 ```
 Above event results in:
 
-![AnimateTrack Position Demo](gif/PositionAnimateTrack1.gif)
+![AnimateTrack Position Demo](media/PositionAnimateTrack1.gif)
 ```js
 
 //AssignPath
@@ -273,7 +273,7 @@ Above event results in:
 ```
 Above event results in:
 
-![AnimateTrack Position Demo](gif/PositionAssignPath.gif)
+![AnimateTrack Position Demo](media/PositionAssignPath.gif)
 
 # _localRotation
 `_localRotation` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
@@ -339,7 +339,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 ```
 Above event results in:
 
-![AnimateTrack localrotation demo](gif/LocalRotationAnimateTrack.gif)
+![AnimateTrack localrotation demo](media/LocalRotationAnimateTrack.gif)
 ```js
 //AssignPathAnimation
 {
@@ -354,7 +354,7 @@ Above event results in:
 ```
 Above event results in: 
 
-![AssignPath localrotation demo](gif/LocalRotationAssignPath.gif)
+![AssignPath localrotation demo](media/LocalRotationAssignPath.gif)
 # _rotation
 `_rotation` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
@@ -400,7 +400,7 @@ Point definition: `[pitch, yaw, roll, time, (optional)easing]`
 ```
 Above event results in:
 
-![AnimateTrack rotation demo why are you reading this](gif/RotationAnimateTrack.gif)
+![AnimateTrack rotation demo why are you reading this](media/RotationAnimateTrack.gif)
 ```js
 //AssignPath
  {
@@ -423,7 +423,7 @@ Above event results in:
 ```
 Above event results in:
 
-!["animate my ass"](gif/RotationAssignPath.gif)
+!["animate my ass"](media/RotationAssignPath.gif)
 # _dissolve
 `_dissolve` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
@@ -470,7 +470,7 @@ Point definition: `[transparency, time, (optional)easing]`
 ```
 Above event results in:
 
-![wowee stop hovering](gif/DissolveAnimateTrack.gif)
+![wowee stop hovering](media/DissolveAnimateTrack.gif)
 
 ```js
 {
@@ -484,7 +484,7 @@ Above event results in:
 ```
 Above event results in:
 
-![fuck you danike](gif/DissolveAssignPath.gif)
+![fuck you danike](media/DissolveAssignPath.gif)
 # _dissolveArrow
 `_dissolveArrow` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
 
@@ -535,7 +535,7 @@ Point definition: `[transparency, time, (optional)easing]`
 ```
 Above event results in:
 
-![HandleBeatmapObjectCallbackControllerBeatmapEventDidTrigger](gif/DissolveAnimateTrack.gif)
+![HandleBeatmapObjectCallbackControllerBeatmapEventDidTrigger](media/DissolveAnimateTrack.gif)
 ```js
 //AssignhPathAnimation
 {
@@ -547,7 +547,7 @@ Above event results in:
 	}
 }
 ```
-![cyan is a gay furry coder](gif/DissolveArrowAssignPath.gif)
+![cyan is a gay furry coder](media/DissolveArrowAssignPath.gif)
 
 # _color
 `_color` may be used in both [`AnimateTrack`](#AnimateTrack) and [`AssignPathAnimation`](#AssignPathAnimation)
@@ -634,7 +634,7 @@ Point definition: `[red,green,blue,alpha,time,(optional)easing]`
 ```
 Above event results in:
 
-![reaxt was in here and he was in pain](gif/ColorAnimateTrack.gif)
+![reaxt was in here and he was in pain](media/ColorAnimateTrack.gif)
 ```js
 //AssignPathAnimation
 {
@@ -676,13 +676,13 @@ Above event results in:
 ```
 Above event results in:
 
-![reaxt was in here and he was in pain](gif/ColorAssignPath.gif)
+![reaxt was in here and he was in pain](media/ColorAssignPath.gif)
 # _definitePosition
 `_definitePosition` may be used in [`AssignPathAnimation`](#AssignPathAnimation)
 
 Describes the **definite** position of an object. Will completely overwrite the object's default movement. However, this does take into account lineIndex/lineLayer and world rotation.
 
-**Note:** `_definitePosition` uses what is known as [Spooky Units](#SpookyUnits)
+**Note:** `_definitePosition` uses what is known as Spooky Units, 1 Spooky unit = 1 lane.
 
 Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 
@@ -733,7 +733,7 @@ Point definition: `[x, y, z, time, (optional)easing, (optional)spline]`
 ```
 Above event results in:
 
-![its almost done](gif/DefinitePositionAnimateTrack.gif)
+![its almost done](media/DefinitePositionAnimateTrack.gif)
 
 
 # _time
@@ -804,10 +804,4 @@ This time example is not the best. It is highly recommended you script/automate 
 ```
 Above event results in:
 
-![i hate manually writing time stuff](gif/TimeIsDumb.gif)
-
-# SpookyUnits
-
-Noodle extensions uses "Spooky Units" for [`_position`](#_position) and [`_definitePosition`](#_definitePosition), in which 1 unit = 1 lane.
-
-ex: ![A spooky ghost](gif/SpookyUnits.png)
+![i hate manually writing time stuff](media/TimeIsDumb.gif)
