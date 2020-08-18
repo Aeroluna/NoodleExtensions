@@ -5,7 +5,7 @@ Note: any mention of easing supports anything seen at https://easings.net/
 
 You can also use "splineCatmullRom" in pointDefinitions as a simple spline implementation
 
-You can find the script and map used to generate all the examples in the documentation [Here](/examples/documentationMap)
+You can find the script and map used to generate all the examples in the documentation [Here](Documentation/examples/documentationMap)
 
 # Custom Events
 All of the below fields are stored inside the `_customData` of your difficulty dat file.
