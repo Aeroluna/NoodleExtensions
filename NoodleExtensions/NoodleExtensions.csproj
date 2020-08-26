@@ -37,8 +37,10 @@
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Libs\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Colors">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\Colors.dll</HintPath>
+    <Reference Include="Colors, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Colors.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="CustomJSONData, Version=0.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -92,13 +94,10 @@
     <Compile Include="HarmonyPatches\BeatmapObjectCallBackController.cs" />
     <Compile Include="HarmonyPatches\BeatmapObjectSpawnController.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\BeatmapObjectExecutionRatingsRecorder.cs" />
+    <Compile Include="HarmonyPatches\FakeNotes\BeatmapObjectManager.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\BombNoteController.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\GameNoteController.cs" />
-    <Compile Include="HarmonyPatches\FakeNotes\MissMissionObjectiveChcker.cs" />
-    <Compile Include="HarmonyPatches\FakeNotes\MissedNoteEffectSpawner.cs" />
-    <Compile Include="HarmonyPatches\FakeNotes\GoodCutsMissionObjectiveChecker.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\FakeNoteHelper.cs" />
-    <Compile Include="HarmonyPatches\FakeNotes\BadCutsMissionObjectiveChecker.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\GameEnergyCounter.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\NoteCutEffectSpawner.cs" />
     <Compile Include="HarmonyPatches\FakeNotes\ObstacleSaberSparkleEffectManager.cs" />
@@ -112,7 +111,6 @@
     <Compile Include="HarmonyPatches\Mirroring\BeatDataMirrorTransform.cs" />
     <Compile Include="HarmonyPatches\NoteFloorMovement.cs" />
     <Compile Include="HarmonyPatches\NoteJump.cs" />
-    <Compile Include="HarmonyPatches\FakeNotes\ScoreController.cs" />
     <Compile Include="HarmonyPatches\SpawnDataHelper.cs" />
     <Compile Include="HarmonyPatches\DisappearingArrowController.cs" />
     <Compile Include="HarmonyPatches\SpawnRotationProcessor.cs" />
@@ -139,6 +137,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).dll" "C:\Program Files (x86)\Steam\steamapps\common\Beat Saber\Plugins\$(TargetName).dll"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).dll" "D:\Oculus\Software\Software\hyperbolic-magnetism-beat-saber\Plugins\$(TargetName).dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
