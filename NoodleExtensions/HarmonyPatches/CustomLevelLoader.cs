@@ -56,18 +56,23 @@
                             }
 
                             dynamic dynData = customData.customData;
-                            float noteJumpMovementSpeed = (float?)Trees.at(dynData, NOTEJUMPSPEED) ?? difficultyBeatmap.noteJumpMovementSpeed;
-                            float noteJumpStartBeatOffset = (float?)Trees.at(dynData, NOTESPAWNOFFSET) ?? difficultyBeatmap.noteJumpStartBeatOffset;
+                            float? noteJumpMovementSpeed = (float?)Trees.at(dynData, NOTEJUMPSPEED);
+                            float? noteJumpStartBeatOffset = (float?)Trees.at(dynData, NOTESPAWNOFFSET);
+
+                            if (!noteJumpMovementSpeed.HasValue && !noteJumpStartBeatOffset.HasValue)
+                            {
+                                return;
+                            }
 
                             // how do i not repeat this in a reasonable way
                             float num = 60f / (float)Trees.at(dynData, "bpm");
                             float num2 = startHalfJumpDurationInBeats;
-                            while (noteJumpMovementSpeed * num * num2 > maxHalfJumpDistance)
+                            while ((noteJumpMovementSpeed ?? difficultyBeatmap.noteJumpMovementSpeed) * num * num2 > maxHalfJumpDistance)
                             {
                                 num2 /= 2f;
                             }
 
-                            num2 += noteJumpStartBeatOffset;
+                            num2 += noteJumpStartBeatOffset ?? difficultyBeatmap.noteJumpStartBeatOffset;
                             if (num2 < 1f)
                             {
                                 num2 = 1f;
