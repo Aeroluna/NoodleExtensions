@@ -61,7 +61,7 @@
 
                             if (!noteJumpMovementSpeed.HasValue && !noteJumpStartBeatOffset.HasValue)
                             {
-                                return;
+                                continue;
                             }
 
                             // how do i not repeat this in a reasonable way
