@@ -57,9 +57,15 @@
             {
                 if (_beatmapObjectSpawnController == null)
                 {
-                    // TODO: find a better way to get the BeatmapObjectManager
                     BeatmapObjectSpawnController spawnController = HarmonyPatches.BeatmapObjectSpawnControllerStart.BeatmapObjectSpawnController;
-                    IBeatmapObjectSpawner beatmapObjectSpawner = _beatmapObjectSpawnAccessor(ref spawnController);
+
+                    IBeatmapObjectSpawner beatmapObjectSpawner = NoodleInstaller.DiContainer.TryResolve<IBeatmapObjectSpawner>();
+                    if (beatmapObjectSpawner == null)
+                    {
+                        NoodleLogger.IPAlogger.Warn($"Could not get IBeatmapObjectSpawner through Zenject.");
+                        beatmapObjectSpawner = _beatmapObjectSpawnAccessor(ref spawnController);
+                    }
+
                     if (beatmapObjectSpawner is BasicBeatmapObjectManager basicBeatmapObjectManager)
                     {
                         _beatmapObjectManager = basicBeatmapObjectManager;

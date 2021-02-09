@@ -88,6 +88,12 @@
         private static void Postfix(ObstacleController __instance, Quaternion ____worldRotation, ObstacleData obstacleData, Vector3 ____startPos, Vector3 ____midPos, Vector3 ____endPos, ref Bounds ____bounds)
 #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
         {
+            if (__instance is MultiplayerConnectedPlayerObstacleController)
+            {
+                GameObject.Destroy(__instance);
+                return;
+            }
+
             if (obstacleData is CustomObstacleData customData)
             {
                 dynamic dynData = customData.customData;
@@ -275,6 +281,11 @@
             ref Bounds ____bounds)
 #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
         {
+            if (__instance is MultiplayerConnectedPlayerObstacleController)
+            {
+                return;
+            }
+
             if (____obstacleData is CustomObstacleData customData)
             {
                 dynamic dynData = customData.customData;

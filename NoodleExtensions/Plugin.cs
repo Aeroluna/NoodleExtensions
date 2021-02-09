@@ -3,6 +3,7 @@
     using System.Reflection;
     using HarmonyLib;
     using IPA;
+    using SiraUtil.Zenject;
     using UnityEngine;
     using IPALogger = IPA.Logging.Logger;
 
@@ -41,11 +42,14 @@
         internal static readonly Harmony _harmonyInstanceCore = new Harmony(HARMONYIDCORE);
         internal static readonly Harmony _harmonyInstance = new Harmony(HARMONYID);
 
+        internal static Zenjector Zenjector { get; private set; }
+
         [Init]
-        public void Init(IPALogger pluginLogger)
+        public void Init(IPALogger pluginLogger, Zenjector zenjector)
         {
             NoodleLogger.IPAlogger = pluginLogger;
             NoodleController.InitNoodlePatches();
+            Zenjector = zenjector;
 
             Animation.TrackManager.TrackManagerCreated += Animation.AssignPlayerToTrack.OnTrackManagerCreated;
             Animation.TrackManager.TrackManagerCreated += Animation.AssignTrackParent.OnTrackManagerCreated;
@@ -57,6 +61,7 @@
         {
             SongCore.Collections.RegisterCapability(CAPABILITY);
             _harmonyInstanceCore.PatchAll(Assembly.GetExecutingAssembly());
+            Zenjector.OnGame<NoodleInstaller>(false);
 
             CustomJSONData.CustomBeatmap.CustomBeatmapData.CustomBeatmapDataWasCreated += FakeNoteRecount.OnCustomBeatmapDataCreated;
         }

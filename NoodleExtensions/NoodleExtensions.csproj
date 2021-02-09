@@ -65,6 +65,11 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="SiraUtil">
+      <HintPath>$(BeatSaberDir)\Plugins\SiraUtil.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="SongCore, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(BeatSaberDir)\Plugins\SongCore.dll</HintPath>
@@ -147,6 +152,7 @@
     <Compile Include="HarmonyPatches\SpawnRotationProcessor.cs" />
     <Compile Include="HarmonyPatches\ObstacleController.cs" />
     <Compile Include="HarmonyPatches\SceneTransition\StandardLevelScenesTransitionSetupDataSO.cs" />
+    <Compile Include="NoodleInstaller.cs" />
     <Compile Include="NoodlePatch.cs" />
     <Compile Include="NullableExtensions.cs" />
     <Compile Include="Plugin.cs" />
@@ -160,18 +166,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NoodleExtensions.ruleset" />
-    <None Include="packages.config" />
     <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
     <None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')" />
     <None Include="NoodleExtensions.csproj.user" Condition="Exists('NoodleExtensions.csproj.user')" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="BeatSaberModdingTools.Tasks">
       <Version>1.2.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers">
+      <Version>1.1.118</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

@@ -39,6 +39,11 @@
         private static void Postfix(NoteController __instance, NoteData noteData, NoteMovement ____noteMovement, Vector3 moveStartPos, Vector3 moveEndPos, Vector3 jumpEndPos)
 #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
         {
+            if (__instance is MultiplayerConnectedPlayerGameNoteController)
+            {
+                return;
+            }
+
             if (noteData is CustomNoteData customData)
             {
                 dynamic dynData = customData.customData;
@@ -208,6 +213,11 @@
         private static void Prefix(NoteController __instance, NoteData ____noteData, NoteMovement ____noteMovement)
 #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
         {
+            if (__instance is MultiplayerConnectedPlayerGameNoteController)
+            {
+                return;
+            }
+
             if (____noteData is CustomNoteData customData)
             {
                 CustomNoteData = customData;
