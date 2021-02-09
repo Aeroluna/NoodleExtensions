@@ -41,6 +41,17 @@
 
         private static Vector3 DefiniteNoteFloorMovement(Vector3 original, NoteFloorMovement noteFloorMovement)
         {
+            if (NoteControllerUpdate.CustomNoteData == null)
+            {
+                NoodleLogger.IPAlogger.Debug($"NoteControllerUpdate.CustomNoteData is null.");
+                return original;
+            }
+            else if (NoteControllerUpdate.CustomNoteData.customData == null)
+            {
+                NoodleLogger.IPAlogger.Debug($"NoteControllerUpdate.CustomNoteData.customData is null.");
+                return original;
+            }
+
             dynamic dynData = NoteControllerUpdate.CustomNoteData.customData;
             dynamic animationObject = Trees.at(dynData, "_animation");
             Track track = Trees.at(dynData, "track");
