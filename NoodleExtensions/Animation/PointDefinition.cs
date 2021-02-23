@@ -38,7 +38,7 @@
                 }
 
                 Functions easing = Functions.easeLinear;
-                bool spline = false;
+                Splines spline = Splines.splineNone;
                 List<object> copiedList = rawPoint.ToList();
                 if (flagIndex != -1)
                 {
@@ -53,16 +53,16 @@
 
                     // TODO: add more spicy splines
                     string splineString = flags.Where(n => n.StartsWith("spline")).FirstOrDefault();
-                    if (splineString == "splineCatmullRom")
+                    if (splineString != null)
                     {
-                        spline = true;
+                        spline = (Splines)Enum.Parse(typeof(Splines), splineString);
                     }
                 }
 
                 if (copiedList.Count() == 2)
                 {
                     Vector2 vector = new Vector2(Convert.ToSingle(copiedList[0]), Convert.ToSingle(copiedList[1]));
-                    pointData.Add(new PointData(vector, easing));
+                    pointData.Add(new PointData(vector, easing, spline));
                 }
                 else if (copiedList.Count() == 4)
                 {
@@ -72,7 +72,7 @@
                 else
                 {
                     Vector5 vector = new Vector5(Convert.ToSingle(copiedList[0]), Convert.ToSingle(copiedList[1]), Convert.ToSingle(copiedList[2]), Convert.ToSingle(copiedList[3]), Convert.ToSingle(copiedList[4]));
-                    pointData.Add(new PointData(vector, easing));
+                    pointData.Add(new PointData(vector, easing, spline));
                 }
             }
 
@@ -111,14 +111,30 @@
             SearchIndex(time, PropertyType.Vector3, out int l, out int r);
 
             float normalTime = (time - _points[l].Point.w) / (_points[r].Point.w - _points[l].Point.w);
-            normalTime = Easings.Interpolate(normalTime, _points[r].Easing);
-            if (_points[r].Smooth)
+            if (_points[r].Spline == Splines.splineCatmullRom)
             {
                 return SmoothVectorLerp(_points, l, r, normalTime);
             }
             else
             {
-                return Vector3.LerpUnclamped(_points[l].Point, _points[r].Point, normalTime);
+                Vector3[] bp = new Vector3[r-l+1];
+                float[] bt = new float[r-l+1];
+                int count = 0;
+                for(int j = l; j <= r; ++j)
+                {
+                    bp[count] = _points[j].Point;
+                    bt[count++] = Easings.Interpolate(normalTime, _points[j].Easing);
+                }
+
+                while(--count > 0)
+                {
+                    for(int j = 0; j < count; ++j)
+                    {
+                        bp[j] = Vector3.LerpUnclamped(bp[j], bp[j+1], bt[j+1]);
+                        bt[j] = (bt[j] + bt[j+1]) / 2;
+                    }
+                }
+                return bp[0];
             }
         }
 
@@ -141,11 +157,25 @@
 
             SearchIndex(time, PropertyType.Quaternion, out int l, out int r);
 
-            Quaternion quaternionOne = Quaternion.Euler(_points[l].Point);
-            Quaternion quaternionTwo = Quaternion.Euler(_points[r].Point);
             float normalTime = (time - _points[l].Point.w) / (_points[r].Point.w - _points[l].Point.w);
-            normalTime = Easings.Interpolate(normalTime, _points[r].Easing);
-            return Quaternion.SlerpUnclamped(quaternionOne, quaternionTwo, normalTime);
+            Quaternion[] bp = new Quaternion[r-l+1];
+            float[] bt = new float[r-l+1];
+            int count = 0;
+            for(int j = l; j <= r; ++j)
+            {
+                bp[count] = Quaternion.Euler(_points[j].Point);
+                bt[count++] = Easings.Interpolate(normalTime, _points[j].Easing);
+            }
+
+            while(--count > 0)
+            {
+                for(int j = 0; j < count; ++j)
+                {
+                    bp[j] = Quaternion.SlerpUnclamped(bp[j], bp[j+1], bt[j+1]);
+                    bt[j] = (bt[j] + bt[j+1]) / 2;
+                }
+            }
+            return bp[0];
         }
 
         // Kind of a sloppy way of implementing this, but hell if it works
@@ -169,8 +199,24 @@
             SearchIndex(time, PropertyType.Linear, out int l, out int r);
 
             float normalTime = (time - _points[l].LinearPoint.y) / (_points[r].LinearPoint.y - _points[l].LinearPoint.y);
-            normalTime = Easings.Interpolate(normalTime, _points[r].Easing);
-            return Mathf.LerpUnclamped(_points[l].LinearPoint.x, _points[r].LinearPoint.x, normalTime);
+            float[] bp = new float[r-l+1];
+            float[] bt = new float[r-l+1];
+            int count = 0;
+            for(int j = l; j <= r; ++j)
+            {
+                bp[count] = _points[j].LinearPoint.x;
+                bt[count++] = Easings.Interpolate(normalTime, _points[j].Easing);
+            }
+
+            while(--count > 0)
+            {
+                for(int j = 0; j < count; ++j)
+                {
+                    bp[j] = Mathf.LerpUnclamped(bp[j], bp[j+1], bt[j+1]);
+                    bt[j] = (bt[j] + bt[j+1]) / 2;
+                }
+            }
+            return bp[0];
         }
 
         public Vector4 InterpolateVector4(float time)
@@ -193,8 +239,24 @@
             SearchIndex(time, PropertyType.Vector4, out int l, out int r);
 
             float normalTime = (time - _points[l].Vector4Point.v) / (_points[r].Vector4Point.v - _points[l].Vector4Point.v);
-            normalTime = Easings.Interpolate(normalTime, _points[r].Easing);
-            return Vector4.LerpUnclamped(_points[l].Vector4Point, _points[r].Vector4Point, normalTime);
+            Vector4[] bp = new Vector4[r-l+1];
+            float[] bt = new float[r-l+1];
+            int count = 0;
+            for(int j = l; j <= r; ++j)
+            {
+                bp[count] = _points[j].Vector4Point;
+                bt[count++] = Easings.Interpolate(normalTime, _points[j].Easing);
+            }
+
+            while(--count > 0)
+            {
+                for(int j = 0; j < count; ++j)
+                {
+                    bp[j] = Vector4.LerpUnclamped(bp[j], bp[j+1], bt[j+1]);
+                    bt[j] = (bt[j] + bt[j+1]) / 2;
+                }
+            }
+            return bp[0];
         }
 
         private static Vector3 SmoothVectorLerp(List<PointData> points, int a, int b, float time)
@@ -255,6 +317,8 @@
                     r = m;
                 }
             }
+            while(r < _points.Count - 1 && _points[r].Spline == Splines.splineBezier) // Skip over bézier control points
+                ++r;
         }
 
         private void Add(PointData point)
@@ -300,23 +364,25 @@
 
         private class PointData
         {
-            internal PointData(Vector4 point, Functions easing = Functions.easeLinear, bool smooth = false)
+            internal PointData(Vector4 point, Functions easing = Functions.easeLinear, Splines spline = Splines.splineNone)
             {
                 Point = point;
                 Easing = easing;
-                Smooth = smooth;
+                Spline = spline;
             }
 
-            internal PointData(Vector2 point, Functions easing = Functions.easeLinear)
+            internal PointData(Vector2 point, Functions easing = Functions.easeLinear, Splines spline = Splines.splineNone)
             {
                 LinearPoint = point;
                 Easing = easing;
+                Spline = spline;
             }
 
-            internal PointData(Vector5 point, Functions easing = Functions.easeLinear)
+            internal PointData(Vector5 point, Functions easing = Functions.easeLinear, Splines spline = Splines.splineNone)
             {
                 Vector4Point = point;
                 Easing = easing;
+                Spline = spline;
             }
 
             internal Vector4 Point { get; }
@@ -327,7 +393,7 @@
 
             internal Functions Easing { get; }
 
-            internal bool Smooth { get; }
+            internal Splines Spline { get; }
         }
     }
 

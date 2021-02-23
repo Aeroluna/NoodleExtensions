@@ -42,6 +42,13 @@
         easeInOutBounce,
     }
 
+    internal enum Splines
+    {
+        splineNone,
+        splineCatmullRom,
+        splineBezier
+    }
+
 #pragma warning restore SA1300 // Element should begin with upper-case letter
 
     internal static class Easings
