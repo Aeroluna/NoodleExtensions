@@ -64,8 +64,8 @@
                 }
                 catch (Exception e)
                 {
-                    Plugin.Logger.Log($"Could not create NoodleEventData for event {customEventData.type} at {customEventData.time}", IPA.Logging.Logger.Level.Error);
-                    Plugin.Logger.Log(e, IPA.Logging.Logger.Level.Error);
+                    NoodleExtensions.Plugin.Logger.Log($"Could not create NoodleEventData for event {customEventData.type} at {customEventData.time}", IPA.Logging.Logger.Level.Error);
+                    NoodleExtensions.Plugin.Logger.Log(e, IPA.Logging.Logger.Level.Error);
                 }
             }
         }
