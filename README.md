@@ -1,6 +1,11 @@
 # NoodleExtensions
 
+This mod requires the Heck to work
+
+Download it here https://github.com/Aeroluna/Heck
+
 This adds a host of new things you can do with your maps.
+
 
 ### MAPPERS: EITHER USE MAPPING EXTENSIONS OR NOODLE EXTENSIONS, DO NOT USE BOTH AT THE SAME TIME. Noodle Extensions is meant to completely replace Mapping Extensions, as they both do the same thing. Having both requirements can break some features.
 
